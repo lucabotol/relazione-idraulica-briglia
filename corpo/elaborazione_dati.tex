@@ -1,0 +1,140 @@
+\section{Elaborazione dati}
+I seguenti procedimenti di calcolo interessano valori valutati per un tempo di ritorno di 50 anni.\\
+In questo capitolo verranno effettuati i calcoli di progetto, in concordanza con le nozioni teoriche esposte nella sezione precedente.\\
+Per semplificare l'esposizione, verranno mostrati solamente i calcoli per eventi pluviometrici di 1 ora di durata. Ovviamente i calcoli sono stati ripetuti per ogni durata di evento pluviometrico (1, 3, 6, 12 e 24 ore), per il tempo di ritorno di 50 anni.
+\subsection{Dati storici di precipitazione}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[H] \centering \footnotesize
+\begin{tabular}{cccccc}
+\multirow{3}{*}{\textbf{Anno}} & \multicolumn{5}{l}{\textbf{Pioggia in mm}}                                           \\
+\toprule
+                               & \textbf{1 ora} & \textbf{3 ore} & \textbf{6 ore} & \textbf{12 ore} & \textbf{24 ore} \\
+                               & \textbf{mm}    & \textbf{mm}    & \textbf{mm}    & \textbf{mm}     & \textbf{mm}     \\
+\midrule
+1992                           & 14.6           & 21             & 33.2           & 60.8            & 78              \\
+1993                           & 18.4           & 23.4           & 41.8           & 65.4            & 76.6            \\
+1994                           & 19.6           & 34.4           & 47.2           & 64.8            & 83.2            \\
+1995                           & 15.8           & 19.6           & 32             & 41.6            & 51              \\
+1996                           & 24.8           & 31             & 40             & 64.8            & 100             \\
+1997                           & 28.6           & 36             & 36             & 55.6            & 69              \\
+1998                           & 17.8           & 28.2           & 39             & 55.2            & 78              \\
+1999                           & 11.8           & 30.2           & 48.4           & 81.4            & 96.4            \\
+2000                           & 15.8           & 25.4           & 46.4           & 67.8            & 73.4            \\
+2001                           & 25.4           & 46.2           & 50.6           & 61.8            & 72              \\
+2002                           & 17.8           & 31.6           & 40             & 63.6            & 98.8            \\
+2003                           & 21.6           & 25.4           & 41.6           & 71.6            & 91.2            \\
+2004                           & 13.8           & 21             & 33.4           & 36.6            & 48.2            \\
+2005                           & 26.2           & 31.4           & 37.2           & 50.4            & 69.8            \\
+2006                           & 14.8           & 27.2           & 48.4           & 63.8            & 69.6            \\
+2007                           & 32.2           & 43.4           & 44.8           & 50.8            & 78.2            \\
+2008                           & 19             & 23.8           & 38.6           & 58.4            & 72              \\
+2009                           & 20             & 25.8           & 34             & 53.6            & 95.4            \\
+2010                           & 8.8            & 18.2           & 30.2           & 47              & 78.4            \\
+2011                           & 25             & 27.2           & 31.4           & 49.6            & 81.8            \\
+2012                           & 18.2           & 28.2           & 49.8           & 83              & 104             \\
+2013                           & 16.8           & 22             & 39             & 61.8            & 69.2            \\
+2014                           & 31.2           & 32.4           & 44             & 73.4            & 114.8           \\
+2015                           & 20.2           & 25.4           & 36.8           & 42.8            & 50.2            \\
+2016                           & 12             & 28.8           & 46.2           & 63              & 67.8            \\
+2017                           & 25.4           & 29.2           & 36             & 62.6            & 72.4            \\
+2018                           & 65.6           & 73             & 73.4           & 87              & 146.4           \\
+2019                           & 16.6           & 24.2           & 42             & 60.4            & 85.6            \\
+2020                           & 28.8           & 37.4           & 47.8           & 65.8            & 120.6           \\
+2021                           & 26.2           & 37.4           & 45.6           & 51.6            & 54.6            \\
+2022                           & 23.2           & 38             & 44             & 44.6            & 46.6            \\
+2023                           & 34.6           & 35.4           & 52.2           & 67.4            & 96.2       \\
+\bottomrule
+\end{tabular}
+\end{table}
+\subsection{Calcolo della LSPP}
+Successivamente ad aver ordinato in ordine crescente le altezze di precipitazione, si è assegnato ad ogni evento pluviometrico un indice di Weibull, mediante la formula \ref{P_em}.
+Dopo aver fatto ciò, si calcolano i parametri statistici di media e deviazione standard, rispettivamente mediante le formule \ref{media_aritmetica} e \ref{dev.st}. \\
+
+\begin{equation}
+      m = \frac{x_1+x_2+...+x_N}{N} = \frac{8.8+...+65.6}{32} = 22.21 mm
+\end{equation}
+\begin{equation}
+      \sigma = \sqrt{\frac{\Sigma(X_1 - \mu)^2}{N+1}}= \sqrt{\frac{(8.8 - 22.21)^2+...(65.6-22.21)^2}{32+1}} = 10.13 mm
+\end{equation}
+E da questi valori appena calcolati, ci si calcola i parametri della distribuzione F(y), utilizzando le formule \ref{alpha} e \ref{u}:
+\begin{equation}
+    \alpha = \frac{\sqrt{6} \cdot \sigma}{\pi} = \frac{\sqrt{6} \cdot 22.21}{\pi} = 7.90
+\end{equation}
+\begin{equation}
+    u = \bar{h} - 0.5772 \cdot \alpha = 10.13- 0.5772 \cdot 7.90 = 17.65
+\end{equation}
+Successivamente, si effettua il calcolo della variabile ridotta, rispetto al tempo di ritorno, come secondo la formula \ref{variabile_ridotta}:
+\begin{equation}
+y_{t}= -\ln \left[ \ln \left(\frac{T}{T-1} \right) \right] = -\ln \left[\ln \left( \frac{50}{50-1} \right) \right ] = 3.902
+\end{equation}
+Ed infine si calcola l'altezza di precipitazione per il dato tempo di ritorno, utilizzando la formula \ref{h_t}:
+\begin{equation}
+h_t = u + \alpha \cdot y_t  = 17.65 + 7.90 \cdot 3.902= 48.5mm
+\end{equation}
+Infine, si effettua il test del $\chi^2$, che per semplicità verrà svolto dall'apposita funzione di Excel. I risultati sono i seguenti: 
+\begin{itemize}
+    \item $\chi ^2$ calcolato: 3.9375
+    \item $\chi ^2$ teorico: 5.9915
+\end{itemize}
+\subsection{Calcolo della portata di picco} \label{portatadipicco}
+Le caratteristiche del bacino sono le seguenti:
+\begin{itemize}
+    \item differenza totale di quota: 1000 m;
+    \item CN: 85;
+    \item area del bacino: 4 km$^2$;
+    \item lunghezza dell'asta principale: 4 km;
+    \item pendenza del reticolo idraulico (i$_f$): 0.025.
+\end{itemize}
+Utilizzando la formula di Giandotti \ref{giandotti} calcolo il tempo di corrivazione del reticolo (t$_c$):
+\begin{equation}
+    t_c = \frac{4 \sqrt{A} + 1.5 \cdot L}{0.8 \cdot \sqrt{z}} = \frac{4 \sqrt{4} + 1.5 \cdot 4}{0.8 \cdot \sqrt{1000}} = 0.48 h
+\end{equation}
+Al fine di conoscere la quantità di precipitazione efficace, per conoscere il coefficiente di deflusso, occorre quantificare lo storage idrico del suolo. Per fare ciò utilizzo la formula \ref{storage}
+\begin{equation}
+    S = S_0 \cdot \left ( \frac{100}{CN} -1 \right ) = 254 \cdot \left ( \frac{100}{85} - 1 \right) = 44.82mm
+\end{equation}
+Da questo parametro è possibile calcolare la precipitazione efficace, mediante la formula \ref{Pe}:
+\begin{equation}
+    P_e = \frac{(h_r - I_a)^2}{h_r - I_a + S} = \frac{(33.87 - 0.1 \cdot44.82)^2}{33.87 - 0.1\cdot48.82 + 48.82}= 11.64 mm
+\end{equation}
+Da questi valori è possibile calcolare il coefficiente di deflusso del bacino, mediante la formula \ref{Cd}:
+\begin{equation}
+    C_d = \frac{P_e}{h_r} = \frac{11.64}{33.87}= 0.36
+\end{equation}
+Infine, si calcola la portata di picco del reticolo idrografico del bacino, utilizzando la formula \ref{Qp}:
+\begin{equation}
+    Q_p = C_d \cdot \frac{h_r \cdot A}{t_c} = 0.36 \cdot \frac{33.87 \cdot 4 \cdot 1000}{0.48 \cdot 3600} = 26.82 \frac{m^3}{s}
+\end{equation}
+
+\subsection{Dimensionamento della sezione del canale} 
+\subsubsection*{Profondità di moto uniforme}
+Mediante la formula \ref{prof_critica_tentativo} si calcola la profondità critica di primo tentativo:
+\begin{equation}
+    y_0 = \left ( \frac{Q}{B \cdot K_S \cdot \sqrt{i_F}} \right) ^ {\frac{3}{5}} = \left ( \frac{26.82}{3 \cdot 10 \cdot \sqrt{0.025}} \right) ^ {\frac{3}{5}} = 2.83m
+\end{equation} 
+Successivamente si calcola il raggio idraulico equivalente, mediante la formula \ref{raggio_idraulico}:
+\begin{equation}
+    Rh_0 = \frac{B \cdot y_0}{B + 2\cdot y_0} = \frac{3 \cdot 2.83}{3 + 2\cdot 2.83} = 0.98 m
+\end{equation} 
+Da questo raggio idraulico si ricalcola la profondità critica, mediante la formula \ref{prof_critica}:
+\begin{equation}
+    y_1 = \frac{Q}{B \cdot K_S \cdot R_h ^\frac{2}{3} \cdot \sqrt{i_F}} = \frac{26.82}{3 \cdot 10 \cdot 0.98 ^\frac{2}{3} \cdot \sqrt{0.025}} = 5.73m
+\end{equation} 
+Infine, si calcola lo scostamento tra le profondità critiche ricavate, mediante la formula \ref{scostamento_prof_critica}:
+\begin{equation}
+    \frac{|y_1 - y_0|}{y_0} = \frac{|5.13 - 2.83|}{2.83} = 1.02  
+\end{equation} 
+Il risultato ottenuto è superiore al limite del 2\%; occorrà ripetere i calcoli, valutando nuovamente il raggio idraulico di un canale con altezza critica di 5.73 m.
+
+\subsubsection*{Energia specifica}
+Mediante la formula \ref{energia_specifica_canale} si calcola l'energia specifica del canale:
+\begin{equation}
+    H = y + \frac{q^2}{2 \cdot g \cdot y^2} = 5.13 + \frac{8.939^2}{2 \cdot 9.81 \cdot 5.13^2} = 5.285m
+\end{equation} 
+
+\subsubsection*{Larghezza limite}
+Mediante la formula \ref{larghezza_specifica} si calcola la larghezza limite del canale, per il passaggio dell'acqua in condizione critica:
+\begin{equation}
+    B_L = \frac{Q}{0.414 \cdot \sqrt{g} \cdot H_1 ^{1.5}} = \frac{26.82}{0.414 \cdot \sqrt{9.81} \cdot 5.285 ^{1.5}} = 1.702m
+\end{equation}
